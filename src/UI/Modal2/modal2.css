@@ -1,0 +1,75 @@
+/* condition to prevent scroll when Modal pop up is active */
+body.active-modal {
+  overflow-y: hidden;
+}
+
+/* button to access modal pop up */
+.open-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+  box-shadow: 0px 5px 5px #ccc;
+}
+
+/* Positioning modal and  its background */
+.modal-container,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+}
+
+/* Background OverLay for Modal */
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+  z-index: 1000;
+  animation: fade-in 500ms forwards;
+}
+
+/* the content of the modal */
+.modal-content {
+  position: absolute;
+  top: 25%;
+  right: 25%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  color: black;
+  animation: slide-in 400ms forwards;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+  box-shadow: 0px 5px 5px #ccc;
+}
+
+/* Animating Modal */
+@keyframes fade-in {
+  /* fade in animation for overlay */
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* slide-in animation for modal */
+@keyframes slide-in {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

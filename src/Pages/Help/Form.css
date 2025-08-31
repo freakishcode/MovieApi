@@ -1,0 +1,132 @@
+.FormContainer1 {
+  margin: auto;
+  width: 35vw;
+  height: 80vh;
+
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+#light .FormContainer1 {
+  background-color: #fff;
+}
+
+#dark .FormContainer1 {
+  background-color: #3e065f;
+}
+
+.title {
+  padding-top: 40px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+#light .title {
+  color: #8c55aa;
+}
+
+#dark .title {
+  color: #ffffff;
+}
+
+.form1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.23rem;
+  padding-top: 30px;
+}
+
+.name,
+.email,
+.msg,
+.submit {
+  width: 76%;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 0.55rem;
+  /* font-family: "Ubuntu", sans-serif; */
+}
+
+.msg {
+  height: 15rem;
+}
+
+.name::placeholder,
+.email::placeholder,
+.msg::placeholder {
+  text-align: center;
+}
+
+/* light mode */
+#light .name,
+#light .email,
+#light .msg {
+  color: rgb(38, 50, 56);
+  background: rgba(136, 126, 126, 0.04);
+}
+
+/* dark mode */
+#dark .name,
+#dark .email,
+#dark .msg {
+  color: rgb(254, 255, 255);
+}
+
+/* Focus in dark mode */
+#dark .name:focus,
+#dark .email:focus,
+#dark .msg:focus {
+  border: 2px solid rgba(245, 240, 240, 0.842) !important;
+}
+
+/* Focus in light mode */
+#light .name:focus,
+#light .email:focus,
+#light .msg:focus {
+  border: 2px solid rgba(84, 17, 241, 0.842) !important;
+}
+
+.submit {
+  margin-top: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(#9c27b0, #e040fb);
+  padding: 10px 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+#light .submit {
+  background: #242424;
+}
+
+.status {
+  color: rgb(194, 60, 60);
+}
+
+.display {
+  margin-top: 0.75rem;
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(30, 54, 59, 1) 0%,
+    rgba(93, 93, 116, 1) 100%
+  );
+  width: 70%;
+  color: #fff;
+  font-size: larger;
+}
+
+@media (max-width: 600px) {
+  .FormContainer1 {
+    border-radius: 0px;
+  }
+}

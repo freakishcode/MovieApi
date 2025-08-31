@@ -1,0 +1,94 @@
+/* condition to prevent scroll when Modal pop up is active */
+body.active-modal {
+  overflow-y: hidden;
+}
+
+/* styling only open button */
+.open-modal-Btn {
+  margin-top: 150px;
+  background-color: rgb(83, 83, 253);
+}
+
+/* styling both open & close button  */
+.open-modal-Btn,
+.closeBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* The actual Modal using HTML element */
+.dialog-content {
+  border: none;
+  border-radius: 15px;
+  background-color: aliceblue;
+  color: black;
+  /* added double shadows to both the modal and its surroundings instead of using backdrop(overlay) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 0 100vw rgb(0, 0, 0, 0.5);
+  padding: 1rem;
+  margin: auto;
+  /* width: 500px;
+  height: 400px; */
+  max-width: 35ch;
+}
+
+/* applied animation to the when dialog is opening & closing */
+.dialog-content[open] {
+  animation: fade-in 500ms forwards;
+}
+.dialog-content[closing] {
+  display: block;
+  inset: 0;
+  pointer-events: none;
+  animation: fade-out 500ms forwards;
+}
+
+/* customizing the Modal overlay using pseudo element */
+/* .dialog-content::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+} */
+
+/* applying animation to the dialog overlay */
+/* .dialog-content[open]::backdrop {
+  animation: fade-in 500ms forwards;
+}
+.dialog-content[closing]::backdrop {
+  animation: fade-out 500ms forwards;
+} */
+
+/* styling only close button */
+.closeBtn {
+  margin-top: 1rem;
+  background-color: rgb(224, 50, 50);
+}
+
+/* Animating dialog Modal */
+@keyframes fade-in {
+  /* fade in animation */
+  0% {
+    opacity: 0;
+    /* slide up animation */
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+/* fade out animation */
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+    /* slide down animation */
+    transform: translateY(100%);
+  }
+
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

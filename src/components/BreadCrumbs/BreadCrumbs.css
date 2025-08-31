@@ -1,0 +1,25 @@
+.breadcrumbs {
+  padding: 0.44rem;
+  max-width: 100%;
+  margin: 20px 10px;
+  border-radius: 10px;
+  background-color: crimson;
+}
+
+.breadcrumbs > * {
+  display: inline-block;
+  margin-right: 0px;
+}
+
+.breadcrumbs .crumb::after {
+  content: ">";
+  margin: 10px;
+}
+
+.breadcrumbs .crumb:last-child::after {
+  display: none;
+}
+
+.breadcrumbs .crumb a {
+  columns: #ddd;
+}

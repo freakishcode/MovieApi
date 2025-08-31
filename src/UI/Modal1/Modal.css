@@ -1,0 +1,110 @@
+/* condition to prevent scroll when Modal pop up is active */
+body.active-modal {
+  overflow-y: hidden;
+}
+
+/* Background overlay */
+.Overlay {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  z-index: 888;
+  animation: fade-in 400ms forwards;
+
+  /* Actual Modal Pop Up */
+  .Modal {
+    width: 20em;
+    height: 400px;
+    padding: 25px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    /* for scrolling if content is too much */
+    /* overflow-y: hidden; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    animation: slide-in 500ms forwards;
+
+    /* The X button */
+    .CancelBtn {
+      display: flex;
+      justify-content: end;
+      background-color: transparent;
+      border: none;
+      font-size: 25px;
+      cursor: pointer;
+      color: black;
+    }
+
+    /* Content title */
+    .title {
+      text-align: center;
+      margin-top: 10px;
+      color: black;
+    }
+
+    /* Content body */
+    .body {
+      margin-top: 5rem;
+      font-size: 1.7rem;
+      text-align: center;
+      color: black;
+    }
+
+    /* Buttons container  */
+    .footerBtn {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      .continueBtn,
+      .closeBtn {
+        border-radius: 8px;
+        font-size: 20px;
+        padding: 0.4rem;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        box-shadow: 0px 5px 5px #ccc;
+      }
+
+      .continueBtn {
+        background-color: #42a942;
+      }
+
+      .closeBtn {
+        background-color: #d9534f;
+      }
+    }
+  }
+}
+
+/* Animating Modal */
+@keyframes fade-in {
+  /* fade in animation for overlay */
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* slide-in animation for modal */
+@keyframes slide-in {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
