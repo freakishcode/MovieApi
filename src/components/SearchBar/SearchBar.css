@@ -15,8 +15,7 @@
 }
 
 .searchbar-btn {
-  border-radius: 50% !important;
-  color: #fff !important;
+  border-radius: 30% !important;
   transition: background 0.2s;
 }
 
