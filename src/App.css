@@ -37,3 +37,12 @@
 #light .movie-title {
   color: black;
 }
+
+.DATE-TIME {
+  text-align: center;
+}
+
+#light .DATE-TIME {
+  color: black;
+  text-align: center;
+}

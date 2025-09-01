@@ -1,0 +1,25 @@
+.searchbar-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.searchbar-input {
+  flex: 1;
+  border-radius: 12px !important;
+}
+
+#dark .searchbar-input {
+  background: #333 !important;
+  color: #fff !important;
+}
+
+.searchbar-btn {
+  border-radius: 50% !important;
+  color: #fff !important;
+  transition: background 0.2s;
+}
+
+#light .iconSearch {
+  color: #333;
+}

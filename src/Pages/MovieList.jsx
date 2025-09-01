@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchMovies, searchMovies } from "../api/MovieApi";
 import {
@@ -10,9 +10,11 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/MovieCard/MovieCard";
 import MovieListItem from "../components/MovieListItem"; // new component
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBar/SearchBar.jsx";
+// CONTEXT COMPONENT
+import { ThemeContext } from "../Context/CreateContextTheme.jsx";
 
 const TMDB_PAGE_CAP = 500;
 
@@ -43,6 +45,9 @@ const MovieList = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [page, query]);
+
+  // APPLIED THEME TO ALL FILES IN APP BY ID
+  const { theme } = useContext(ThemeContext);
 
   if (isLoading) return <CircularProgress />;
   if (isError)
@@ -77,6 +82,18 @@ const MovieList = () => {
           exclusive
           onChange={(_, newView) => newView && setView(newView)}
           size='small'
+          sx={{
+            bgcolor: theme.mode === "dark" ? "#222" : "#f5f5f5",
+            borderRadius: 2,
+            "& .MuiToggleButton-root": {
+              color: theme.mode === "dark" ? "#e0e0e0" : "#222",
+              borderColor: theme.mode === "dark" ? "#444" : "#ccc",
+              "&.Mui-selected": {
+                bgcolor: theme.mode === "dark" ? "#1976d2" : "#bbdefb",
+                color: theme.mode === "dark" ? "#fff" : "#1976d2",
+              },
+            },
+          }}
         >
           <ToggleButton value='grid'>Grid</ToggleButton>
           <ToggleButton value='list'>List</ToggleButton>

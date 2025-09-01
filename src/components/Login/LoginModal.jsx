@@ -64,11 +64,12 @@ export default function LoginModal({ open, onClose }) {
   const mutation = useMutation({
     mutationFn: loginRequest,
     onSuccess: (result) => {
+      // If login is successful, store the token and close the modal
       if (result.status) {
         localStorage.setItem("token", result.status);
         setSubmitError("");
         onClose();
-        navigate("/");
+        navigate("/profile");
       } else {
         setSubmitError("Invalid username or password");
       }

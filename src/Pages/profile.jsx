@@ -1,57 +1,110 @@
-import { useCallback, useEffect, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
+
+// JWT decoding library
 import jwt from "jwt-decode";
 
+import { useQuery } from "@tanstack/react-query";
+
+// MUI components
+import {
+  Box,
+  Typography,
+  Paper,
+  CircularProgress,
+  Alert,
+  Button,
+} from "@mui/material";
+
+// API
+import { fetchUser } from "../api/PhpApi";
+
 export default function Profile() {
-  const [user, setUser] = useState();
-  const userToken = jwt(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
 
-  const getUser = useCallback(async () => {
-    try {
-      await fetch("http://localhost:8081/hs-login-system/api/user", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw new Error("error");
-        })
-        .then((data) => {
-          setUser(data.status);
-        });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, []);
+  // Decode the token only when it changes
+  const userToken = useMemo(() => (token ? jwt(token) : null), [token]);
 
-  useEffect(() => {
-    getUser();
-  }, [getUser]);
+  // Fetch user data using React Query
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["userProfile"],
+    queryFn: fetchUser,
+    enabled: !!token,
+  });
 
   return (
-    <div className='profile'>
-      <h2>Profile</h2>
-      {user && (
-        <>
-          <label>Name: {user.name}</label>
-          <label>Last Name: {user.lastname}</label>
-          <label>Username: {user.username}</label>
-          <label>Email: {user.email}</label>
-        </>
-      )}
-      <h2>User from token</h2>
-      {userToken && (
-        <>
-          <label>Name: {userToken.user.name}</label>
-          <label>Last Name: {userToken.user.lastname}</label>
-          <label>Username: {userToken.user.username}</label>
-          <label>Email: {userToken.user.email}</label>
-        </>
-      )}
-      <Link to='/'>Home</Link>
-    </div>
+    <Box
+      display='flex'
+      flexDirection='column'
+      alignItems='center'
+      mt={4}
+      gap={3}
+    >
+      <Paper elevation={3} sx={{ p: 4, minWidth: 350 }}>
+        <Typography variant='h4' gutterBottom>
+          Profile
+        </Typography>
+
+        {/* // Display loading, error, or user data */}
+        {isLoading && <CircularProgress />}
+        {error && (
+          <Alert severity='error' sx={{ mb: 2 }}>
+            Failed to load user data.
+          </Alert>
+        )}
+
+        {/* // Display user data from API */}
+        {user && (
+          <Box mb={2}>
+            <Typography>
+              <strong>Name:</strong> {user.name}
+            </Typography>
+            <Typography>
+              <strong>Last Name:</strong> {user.lastname}
+            </Typography>
+            <Typography>
+              <strong>Username:</strong> {user.username}
+            </Typography>
+            <Typography>
+              <strong>Email:</strong> {user.email}
+            </Typography>
+          </Box>
+        )}
+
+        {/* // Display user data from token */}
+        <Typography variant='h5' gutterBottom>
+          User from token
+        </Typography>
+        {userToken && userToken.user && (
+          <Box>
+            <Typography>
+              <strong>Name:</strong> {userToken.user.name}
+            </Typography>
+            <Typography>
+              <strong>Last Name:</strong> {userToken.user.lastname}
+            </Typography>
+            <Typography>
+              <strong>Username:</strong> {userToken.user.username}
+            </Typography>
+            <Typography>
+              <strong>Email:</strong> {userToken.user.email}
+            </Typography>
+          </Box>
+        )}
+        <Button
+          component={Link}
+          to='/'
+          variant='contained'
+          color='primary'
+          sx={{ mt: 3 }}
+        >
+          Home
+        </Button>
+      </Paper>
+    </Box>
   );
 }

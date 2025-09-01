@@ -1,28 +1,33 @@
 import { useEffect, useState } from "react";
 
-function UseDate() {
-  const Locale = "em";
-  const [Today, setDate] = useState(new Date());
+/**
+ * Custom hook to get the current date and time, updating every minute.
+ * @param {string} locale - Optional locale string (default: "en-US")
+ * @returns {{ date: string, time: string, raw: Date }}
+ */
+function useDate(locale = "en-US") {
+  const [now, setNow] = useState(new Date());
 
   useEffect(() => {
-    const Timer = setInterval(() => {
-      setDate(new Date());
-    }, 60 * 1000);
-
-    return () => {
-      clearInterval(Timer);
-    };
+    const timer = setInterval(() => setNow(new Date()), 60 * 1000);
+    return () => clearInterval(timer);
   }, []);
 
-  const day = Today.toLocalDateString(Locale, { weekday: "long" });
-  const date = `${day}, ${Today.getDate()}, ${Today.toLocalDateString(Locale, { month: "long" })}\n\n `;
-  const Time = Today.toLocalDateString(Locale, {
-    hour: "numeric",
-    hour12: true,
-    minutes: "numeric",
+  // Format: "Monday, 31 August"
+  const date = now.toLocaleDateString(locale, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
   });
 
-  return { date, Time };
+  // Format: "10:30 AM"
+  const time = now.toLocaleTimeString(locale, {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return { date, time, raw: now };
 }
 
-export default UseDate;
+export default useDate;

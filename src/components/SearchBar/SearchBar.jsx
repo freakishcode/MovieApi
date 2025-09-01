@@ -1,3 +1,5 @@
+import "./SearchBar.css";
+
 import { useState } from "react";
 import { TextField, IconButton, Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -11,20 +13,16 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <Box
-      component='form'
-      onSubmit={handleSubmit}
-      sx={{ display: "flex", gap: 1, mb: 3 }}
-    >
+    <Box component='form' onSubmit={handleSubmit} className='searchbar-form'>
       <TextField
         fullWidth
         label='Search movies...'
         value={term}
-        style={{ borderRadius: 3 }}
         onChange={(e) => setTerm(e.target.value)}
+        className='searchbar-input'
       />
-      <IconButton type='submit' color='primary'>
-        <SearchIcon />
+      <IconButton type='submit' color='primary' className='searchbar-btn'>
+        <SearchIcon className='iconSearch' />
       </IconButton>
     </Box>
   );
