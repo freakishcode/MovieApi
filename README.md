@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# 🎬 MovieApi — React Movie Trailer App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern movie trailer web app built with **React**, **Material UI**, and **React Query**. It fetches movie data from [TMDB](https://www.themoviedb.org/) and supports user authentication via a PHP backend (with MySQL + JWT). Features include search, pagination, theming, and video previews.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- 🔍 **Search** for movies by title
+- 🎞️ **Watch trailers** (YouTube embed)
+- 📄 **Movie details**: overview, release date, poster
+- 🗂️ **Grid/List view toggle**
+- ⏩ **Pagination** (up to 500 pages)
+- 🌗 **Light/Dark theme** (context-based)
+- 👤 **User authentication** (register/login/logout)
+- 📝 **Profile page** (JWT-based)
+- 📦 **File upload** demo
+- ⚡ **Fast data fetching** with React Query
+- 🛠️ **PHP/MySQL backend** for user management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Project Structure
 
-### `npm test`
+```
+movie-api/
+├── public/                  # Public files
+│   ├── index.html           # Main HTML file
+│   └── favicon.ico          # Favicon
+├── src/                     # Source files
+│   ├── api/                 # API calls and configurations
+│   ├── assets/              # Images, fonts, and other assets
+│   ├── components/          # Reusable components
+│   ├── hooks/               # Custom React hooks
+│   ├── layouts/             # Layout components
+│   ├── pages/               # Page components
+│   ├── styles/              # Global styles and theme
+│   ├── App.js               # Main App component
+│   └── index.js             # Entry point
+├── .env                     # Environment variables
+├── .gitignore               # Git ignore file
+├── package.json             # NPM dependencies and scripts
+└── README.md                # Project documentation
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🚧 Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get a local copy up and running, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repo**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/yourusername/movie-api.git
+   ```
 
-### `npm run eject`
+2. **Install dependencies**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Navigate to the project directory and run:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Set up environment variables**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   Create a `.env` file in the root directory and add your configuration:
 
-## Learn More
+   ```env
+   REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+   REACT_APP_BACKEND_URL=http://localhost:8000
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Start the development server**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Run the following command:
 
-### Code Splitting
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📚 Learn More
 
-### Making a Progressive Web App
+To learn more about the technologies used in this project, check out the following resources:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [React documentation](https://reactjs.org/docs/getting-started.html)
+- [Material UI documentation](https://mui.com/getting-started/installation/)
+- [React Query documentation](https://react-query.tanstack.com/overview)
+- [TMDB API documentation](https://developers.themoviedb.org/3/getting-started/introduction)
+- [PHP documentation](https://www.php.net/manual/en/index.php)
+- [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 License
 
-### Deployment
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 👤 Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Your Name** - [yourusername](https://github.com/yourusername)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
+
+---
+
+## 📄 Acknowledgements
+
+- [Create React App](https://github.com/facebook/create-react-app) - Bootstrapping the project
+- [TMDB](https://www.themoviedb.org/) - Movie data API
+- [React Query](https://react-query.tanstack.com/) - Data fetching and state management
+- [Material UI](https://mui.com/) - React components for faster and easier web development
+- [PHP](https://www.php.net/) - Server-side scripting language
+- [MySQL](https://www.mysql.com/) - Database management system
