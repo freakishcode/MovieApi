@@ -43,10 +43,7 @@ export const Routers = createBrowserRouter(
       {/* Error page Route if None of the above page is Not found */}
       <Route path='*' element={<NotFound />} />
     </Route>
-  ),
-  {
-    basename: "/MovieApi", // 👈 Add this line
-  }
+  )
 );
 
 function App() {
