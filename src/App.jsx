@@ -1,3 +1,4 @@
+import { lazy } from "react";
 // CSS
 import "./App.css";
 
@@ -13,8 +14,8 @@ import {
 import { ThemeProviderContext } from "./Context/ThemeProviderContext";
 
 // TODO: REACT ROUTER PAGES COMPONENTS
-import Home from "./Pages/Home";
-import About from "./Pages/About";
+const Home = lazy(() => import("./Pages/Home"));
+const About = lazy(() => import("./Pages/About"));
 import Contact from "./Pages/Help/Form";
 import MovieList from "./Pages/MovieList";
 
