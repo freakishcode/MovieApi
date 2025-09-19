@@ -147,17 +147,7 @@ export default function LoginModal({ open, onClose }) {
                 {mutation.isLoading || isSubmitting ? "Logging in..." : "Login"}
               </Button>
               <Typography align='center' variant='body2'>
-                Don't have an account?{" "}
-                <Link
-                  to='/register'
-                  style={{
-                    color: "#1976d2",
-                    textDecoration: "none",
-                  }}
-                >
-                  Register
-                </Link>
-                {" | "}
+                Don't remember your password?{" "}
                 <Link
                   to='/reset'
                   style={{

@@ -23,7 +23,7 @@ const modalStyle = {
   borderRadius: 3,
   boxShadow: 24,
   p: 4,
-  minWidth: 450,
+  minWidth: 400,
   maxWidth: "95vw",
   outline: "none",
   transition: "all 0.3s cubic-bezier(.4,0,.2,1)",
@@ -180,18 +180,6 @@ export default function RegisterModal({ open, setOpen, onClose }) {
               >
                 Register
               </Button>
-              <Typography align='center' variant='body2'>
-                Already have an account?{" "}
-                <Link
-                  to='/login'
-                  style={{
-                    color: "#1976d2",
-                    textDecoration: "none",
-                  }}
-                >
-                  Login
-                </Link>
-              </Typography>
             </Stack>
           </form>
         </Box>

@@ -15,13 +15,12 @@ import { ThemeProviderContext } from "./Context/ThemeProviderContext";
 
 // TODO: REACT ROUTER PAGES COMPONENTS
 const Home = lazy(() => import("./Pages/Home"));
-const About = lazy(() => import("./Pages/About"));
+const About = lazy(() => import("./Layout/AboutLayout/About"));
 import Contact from "./Pages/Help/Form";
 import MovieList from "./Pages/MovieList";
 
 // TODO: My layouts : TO store Links and NavLinks
 import NavBarLayout from "./Layout/RootLayout/RootLayout";
-import HelpLayout from "./Layout/HelpLayout/Help";
 
 // !! Error Message Routes Component
 import NotFound from "./Pages/NotFound/NotFound";
@@ -32,14 +31,12 @@ export const Routers = createBrowserRouter(
     <Route path='/' element={<NavBarLayout />}>
       <Route index element={<Home />} />
 
-      <Route path='About' element={<About />} />
-
-      <Route path='MovieList' element={<MovieList />} />
-
       {/* Nested Route */}
-      <Route path='Help' element={<HelpLayout />}>
+      <Route path='About' element={<About />}>
         <Route path='Contact' element={<Contact />} />
       </Route>
+
+      <Route path='MovieList' element={<MovieList />} />
 
       {/* Error page Route if None of the above page is Not found */}
       <Route path='*' element={<NotFound />} />

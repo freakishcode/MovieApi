@@ -6,7 +6,7 @@ import "./BreadCrumbs.css";
 function BreadCrumbs() {
   const location = useLocation();
 
-  // /help/contact --> help | contact
+  // /About/contact --> About | contact
 
   let currentLink = [];
 
@@ -22,7 +22,7 @@ function BreadCrumbs() {
       );
     });
 
-  return <div className='breadcrumbs'>{crumbs}</div>;
+  return <header className='breadcrumbs'>{crumbs}</header>;
 }
 
 export default BreadCrumbs;

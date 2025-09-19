@@ -28,7 +28,6 @@ import "./RootLayout.css";
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/About" },
-  { label: "Help", to: "/Help" },
 ];
 
 function RootLayout() {

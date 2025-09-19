@@ -1,9 +1,12 @@
 .breadcrumbs {
   padding: 0.44rem;
   max-width: 100%;
-  margin: 20px 10px;
+  text-align: center;
   border-radius: 10px;
-  background-color: crimson;
+
+  header {
+    text-decoration: underline;
+  }
 }
 
 .breadcrumbs > * {
