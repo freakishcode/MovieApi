@@ -1,9 +1,22 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// cors
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: POST");
+// Allow your frontend origin (change to your deployed domain in production)
+header("Access-Control-Allow-Origin: http://localhost:5173"); // safer than *
+// Allowed request headers
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+// Allowed request methods
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
+// Handle preflight (OPTIONS) requests
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Database configuration
 require __DIR__ . "/dbConfig.php"; 
@@ -22,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $input = json_decode(file_get_contents("php://input"), true);
 
 // Validate required fields
-$required = ["firstName", "lastName", "username", "password", "email"];
+$required = ["firstName", "lastName", "username", "email", "password"];
 foreach ($required as $field) {
     if (empty($input[$field])) {
         http_response_code(400);
@@ -62,15 +75,15 @@ try {
 
     // Insert user
     $stmt = $pdo->prepare(
-        "INSERT INTO users (first_name, last_name, username, email, password) 
-         VALUES (:first_name, :last_name, :username, :email, :password)"
+        "INSERT INTO users (first_name, last_name, username, email, pass_word) 
+         VALUES (:first_name, :last_name, :username, :email, :pass_word)"
     );
     $stmt->execute([
         'first_name' => $input["firstName"],
         'last_name'  => $input["lastName"],
         'username'   => $input["username"],
         'email'      => $input["email"],
-        'password'   => $hashedPassword
+        'pass_word'  => $hashedPassword
     ]);
 
     // Generate a fake token for demo
@@ -84,7 +97,8 @@ try {
     http_response_code(500);
     echo json_encode([
         "status" => false,
-        "message" => "Registration failed"
+        "message" => "Registration failed",
+        "error" => $e->getMessage() // ⚠️ show details only in development
     ]);
 }
-?>
+

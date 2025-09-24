@@ -45,7 +45,7 @@ const modalStyle = {
 };
 
 // API
-import { loginRequest } from "../../api/PhpApi";
+import { loginRequest } from "../../api/regLogApi";
 
 export default function LoginModal({ open, onClose }) {
   const navigate = useNavigate();

@@ -12,7 +12,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Fade from "@mui/material/Fade";
-import { registerRequest } from "../../api/PhpApi";
+import { registerRequest } from "../../api/regLogApi";
 
 const modalStyle = {
   position: "absolute",
@@ -41,8 +41,8 @@ function validateForm({ firstName, lastName, username, email, password }) {
   }
   if (!password) {
     errors.password = "Password is required.";
-  } else if (password.length < 6) {
-    errors.password = "Password must be at least 6 characters.";
+  } else if (password.length < 5) {
+    errors.password = "Password must be at least 5 characters.";
   }
   return errors;
 }
@@ -76,15 +76,20 @@ export default function RegisterModal({ open, setOpen, onClose }) {
   const submitHandler = (event) => {
     event.preventDefault();
     setGeneralError("");
+
     const data = {
       firstName: FirstNameRef.current.value,
       lastName: lastNameRef.current.value,
       username: usernameRef.current.value,
-      password: passwordRef.current.value,
       email: emailRef.current.value,
+      password: passwordRef.current.value,
     };
+
+    // validate all input
     const errors = validateForm(data);
+
     setFieldErrors(errors);
+
     if (Object.keys(errors).length > 0) {
       return;
     }
